@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Drinks;
+use App\Http\Controllers\DrinkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+Route::get('/drinks', [DrinkController::class, 'index']);
+Route::post('/drinkState', [DrinkController::class, 'store']);
+Route::post('/drinks/{drink}', [DrinkController::class, 'update']);
+Route::get('/drinks/{idDrink}', [DrinkController::class, 'getInfo']);
+Route::delete('/drinks/{drink}', [DrinkController::class, 'delete']);
+
+
